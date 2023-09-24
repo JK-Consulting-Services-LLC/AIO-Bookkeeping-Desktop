@@ -7,12 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace AIO_Bookkeeping
 {
     public partial class MainWindow : Form
     {
         private int childFormNumber = 0;
+        private Company company;
+
+        public void SetCompany(Company company)
+        {
+            this.company = company;
+        }
+
+        public Company GetCompany()
+        {
+            return company;
+        }
 
         public MainWindow()
         {
@@ -34,6 +46,8 @@ namespace AIO_Bookkeeping
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = openFileDialog.FileName;
+                Stream s = File.Open(FileName, FileMode.Open, FileAccess.Read);
+                XmlReader reader = new XmlTextReader(s);
             }
         }
 

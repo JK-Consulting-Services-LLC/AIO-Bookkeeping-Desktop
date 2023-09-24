@@ -50,6 +50,7 @@ namespace AIO_Bookkeeping
                 writer.Flush();
                 writer.Close();
                 s.Close();
+                ((MainWindow) this.MdiParent).SetCompany(new Company(FileName));
             }
         }
     }
